@@ -32,7 +32,7 @@ SECRET_KEY = "django-insecure-dyvv+5xh_bidjsyg&6)5#zu(9r^am*=3w8emewmkoy@l493zsi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nameless-ocean-69439.herokuapp.com',  'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -83,9 +83,11 @@ WSGI_APPLICATION = "socialmedia.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://USER:PASSWORD@localhost:5432/your_db')
+    'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/DATABASE')
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
