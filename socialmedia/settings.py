@@ -57,9 +57,20 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+
+
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 ROOT_URLCONF = "socialmedia.urls"
+
 
 TEMPLATES = [
     {
@@ -83,10 +94,10 @@ WSGI_APPLICATION = "socialmedia.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://u65r162pd2am6b:p4667543f42284c45718793766bf3d059b059f63c83912892234a273a5c4abd8c@c6sfjnr30ch74e.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/de0cqfua0q1l33')
+    'default': dj_database_url.config()
 }
+
 
 
 # Password validation
@@ -119,6 +130,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -126,7 +142,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
 
-MEDIA_URL = '/media/'  # URL prefix for serving media files
+MEDIA_URL = '/media/'  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media/')
 
 # Default primary key field type
