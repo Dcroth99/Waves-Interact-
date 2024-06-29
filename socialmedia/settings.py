@@ -33,7 +33,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'django_errors.log'),
+            'filename': LOGS_DIR / 'django_errors.log',
         },
     },
     'loggers': {
@@ -45,9 +45,9 @@ LOGGING = {
     },
 }
 
-logs_dir = os.path.join(BASE_DIR, 'logs')
-os.makedirs(logs_dir, exist_ok=True)
 
+LOGS_DIR = BASE_DIR / 'logs'
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -89,10 +89,14 @@ MIDDLEWARE = [
 
 
 
-DATABASES = {
+"""DATABASES = {
     'default': dj_database_url.config(
         default='postgres://u65r162pd2am6b:p4667543f42284c45718793766bf3d059b059f63c83912892234a273a5c4abd8c@c6sfjnr30ch74e.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/de0cqfua0q1l33', conn_max_age=600, ssl_require=True
     )
+}"""
+
+DATABASES = {
+    'default': dj_database_url.config()
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
