@@ -26,6 +26,11 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+LOGS_DIR = BASE_DIR / 'logs'
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -33,7 +38,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': LOGS_DIR / 'django_errors.log',
+            'filename': str(LOGS_DIR / 'django_errors.log'),
         },
     },
     'loggers': {
@@ -45,9 +50,6 @@ LOGGING = {
     },
 }
 
-
-LOGS_DIR = BASE_DIR / 'logs'
-LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
