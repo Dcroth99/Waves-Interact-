@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-dyvv+5xh_bidjsyg&6)5#zu(9r^am*=3w8emewmkoy@l493zsi"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['nameless-ocean-69439.herokuapp.com',  'localhost', '127.0.0.1']
 
