@@ -36,7 +36,9 @@
 
 <div class="row mt-5">
     <div class="col-md-3">
-        <img src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'path_to_default_image.jpg' %}{% endif %}" class="img-fluid rounded-circle" alt="Profile Picture" style="max-height:200px;">
+        {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture" style="max-height:200px;">
+        {% endif %}
     </div>
     <div class="col-md-9">
         <h1 class="username">@{{ profile.user.username }}</h1>
@@ -97,7 +99,7 @@
         {% for post in posts %}
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'profile' username=post.user.username %}">{{ post.user.username }}</a></h5>
+                    <h5 class="card-title"><a href="{% url 'profile' post.user.username %}">{{ post.user.username }}</a></h5>
                     <p class="card-text">{{ post.content|mention_to_link }}</p>
                     {% if post.image %}
                         <img src="{{ post.image.url }}" class="img-fluid" alt="Post Image">
@@ -115,7 +117,7 @@
                     </form>
                     <ul class="list-group mt-2">
                         {% for comment in post.comments.all %}
-                            <li class="list-group-item"><a href="{% url 'profile' username=comment.user.username %}">{{ comment.user.username }}</a>: {{ comment.content|mention_to_link }}</li>
+                            <li class="list-group-item"><a href="{% url 'profile' comment.user.username %}">{{ comment.user.username }}</a>: {{ comment.content|mention_to_link }}</li>
                         {% endfor %}
                     </ul>
                     {% if post.user == user %}
