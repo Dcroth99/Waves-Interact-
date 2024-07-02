@@ -5,12 +5,14 @@ from users.models import Notification, Profile
 from django.db.models import Q
 
 
+
 @login_required
 def feed(request):
     posts = Post.objects.filter(user__followers__follower=request.user).order_by('-created_at')
     posts_with_comments = {post: post.comments.all() for post in posts}
     notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'feed.html', {'posts_with_comments': posts_with_comments, 'notifications': notifications})
+
 
 @login_required
 def create_post(request):
@@ -30,6 +32,7 @@ def create_post(request):
     #this happens reguardless of the if statement
     #it's best practice to render the html at the bottom
     return render(request, 'create_post.html')
+
 
 @login_required
 def like_post(request, post_id):
@@ -61,6 +64,7 @@ def like_post(request, post_id):
     # same part of the page they were on before the page refreshes
     return redirect(request.META.get('HTTP_REFERER', 'feed'))
 
+
 @login_required
 def comment_post(request, post_id):
 
@@ -78,6 +82,7 @@ def comment_post(request, post_id):
                     text=f"{request.user.username} commented on your post."
                 )
     return redirect(request.META.get('HTTP_REFERER', 'feed'))
+
 
 @login_required
 def delete_post(request, post_id):

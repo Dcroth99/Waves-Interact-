@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Profile, Follow, Notification
+from .forms import ProfilePictureForm
 
 @login_required
 def profile(request, username):
@@ -76,6 +77,20 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('logout')
+
+@login_required
+def update_profile_picture(request):
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', username=request.user.username)
+    else:
+        form = ProfilePictureForm(instance=profile)
+
+    return render(request, 'update_profile_picture.html', {'form': form})
 
 
 def custom_404(request, exception):

@@ -39,6 +39,7 @@
         {% if profile.profile_picture %}
             <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture" style="max-height:200px;">
         {% endif %}
+        <a href="{% url 'update_profile_picture' %}" class="btn btn-secondary mt-2">Update Profile Picture</a>  <!-- Link to update profile picture -->
     </div>
     <div class="col-md-9">
         <h1 class="username">@{{ profile.user.username }}</h1>
