@@ -8,7 +8,7 @@
     {% load static %}
     <style>
         body {
-            background-color: rgb(0, 0, 0);
+            background-color: rgb(213, 240, 245);
         }
         .navbar {
             margin-bottom: 20px;
@@ -24,6 +24,15 @@
         }
         .btn-submit:hover {
             background-color: #0056b3;
+        }
+        .H1FEED {
+            font-family: serif;
+            color: rgb(0, 0, 0);
+            font-size: 50px;
+            padding-right: 20px;
+        }
+        .H1FEED:hover {
+            text-decoration: none;
         }
         .post-image {
             max-width: 100%;
@@ -111,14 +120,15 @@
         }
         .btn-toggle-notifications {
             position: fixed;
-            top: 100px;
-            right: 270px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            padding: 3px 6px;
+            top: 10px;
+            right: 10px;
+            background-color: #63a8f3;
+            color: rgb(0, 0, 0);
+            border-radius: 50%;
+            padding: 5px 10px;
             cursor: pointer;
             z-index: 1000;
+            font-size: 12px;
         }
         .notifications.hidden {
             transform: translateX(100%);
