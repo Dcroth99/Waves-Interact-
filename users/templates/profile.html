@@ -41,6 +41,7 @@
         {% endif %}
         {% if profile.user == request.user %}
             <a href="{% url 'update_profile_picture' %}" class="btn btn-secondary mt-2" style="padding: 2px 5px; font-size: 12px;">Update Profile Picture</a>
+            <a href="{% url 'update_profile_bio' %}" class="btn btn-secondary mt-2" style="padding: 2px 5px; font-size: 12px;">Update Bio</a>
         {% endif %}
     </div>
     <div class="col-md-9">
