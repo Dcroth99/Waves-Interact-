@@ -10,7 +10,7 @@ from .forms import ProfilePictureForm, ProfileBioForm
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     profile = get_object_or_404(Profile, user=user)
-    posts = user.post_set.all()
+    posts = user.post_set.all().order_by('-created_at') 
     followers = User.objects.filter(following__following=user)
     following = User.objects.filter(followers__follower=user)
     is_following = Follow.objects.filter(follower=request.user, following=user).exists()
