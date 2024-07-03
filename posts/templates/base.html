@@ -73,19 +73,65 @@
             background-color: #433e3f;
         }
         .btn-toggle-notifications {
-            position: absolute;
+            position: fixed;
             top: 10px;
             right: 10px;
             background-color: lightgrey;
             color: rgb(0, 0, 0);
-            border-radius: 2px;
-            padding: 5px 10px;
+            border-radius: 50%;
+            padding: 5px;
             cursor: pointer;
             z-index: 1000;
             font-size: 12px;
         }
         .notifications.hidden {
             transform: translateX(100%);
+        }
+
+        /* Media Queries for smaller screens */
+        @media (max-width: 768px) {
+            .navbar .navbar-toggler {
+                margin-right: 10px;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-brand,
+            .nav-link {
+                display: block;
+                width: 100%;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            .H1FEED {
+                font-size: 30px;
+            }
+            .notifications {
+                width: 100%;
+                right: 0;
+                top: 60px;
+            }
+            .btn-toggle-notifications {
+                top: 60px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 10px;
+            }
+            .navbar-brand {
+                font-size: 18px;
+            }
+            .nav-link {
+                font-size: 14px;
+            }
+            .H1FEED {
+                font-size: 24px;
+                padding-right: 10px;
+            }
         }
     </style>
     <script>
@@ -126,7 +172,7 @@
             </div>
         </nav>
 
-        <button class="btn-toggle-notifications">Toggle Notifications</button>
+        <button class="btn-toggle-notifications">N</button>
         <div class="notifications hidden">
             {% if notifications %}
                 <a href="{% url 'clear_notifications' %}" class="btn btn-clear-notifications">Clear Notifications</a>
@@ -143,5 +189,5 @@
         {% block content %}{% endblock %}
     </div>
 </body>
-<footer style=" margin-left: 650px;">@WAVES website</footer>
+<footer style="text-align: center;">@WAVES website</footer>
 </html>

@@ -46,6 +46,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
+            transition: transform 0.3s ease;
         }
         .notification {
             border-bottom: 1px solid #ddd;
@@ -115,6 +116,52 @@
         .btn-clear-messages:hover {
             background-color: #433e3f;
         }
+
+        /* Media Queries for smaller screens */
+        @media (max-width: 768px) {
+            .navbar .navbar-toggler {
+                margin-right: 10px;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-brand,
+            .nav-link {
+                display: block;
+                width: 100%;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            .H1FEED {
+                font-size: 30px;
+            }
+            .notifications {
+                width: 100%;
+                right: 0;
+                top: 60px;
+            }
+            .btn-toggle-notifications {
+                top: 60px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 10px;
+            }
+            .navbar-brand {
+                font-size: 18px;
+            }
+            .nav-link {
+                font-size: 14px;
+            }
+            .H1FEED {
+                font-size: 24px;
+                padding-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -144,7 +191,6 @@
             </div>
         </nav>
 
-
         <h1>Create Post</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -160,5 +206,5 @@
         </form>
     </div>
 </body>
-<footer style=" margin-left: 650px;">@WAVES website</footer>
+<footer style="text-align: center;">@WAVES website</footer>
 </html>

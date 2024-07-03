@@ -14,6 +14,37 @@
     .navbar {
         margin-bottom: 20px;
     }
+    .profile-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .profile-header img {
+        max-height: 200px;
+        margin-right: 20px;
+    }
+    .profile-header h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+    }
+    .profile-header p {
+        font-size: 16px;
+    }
+    .profile-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    @media (max-width: 768px) {
+        .profile-header img {
+            margin: 0 auto;
+        }
+        .profile-actions {
+            justify-content: center;
+        }
+    }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -34,19 +65,21 @@
     });
 </script>
 
-<div class="row mt-5">
-    <div class="col-md-3">
+<div class="profile-header mt-5">
+    <div class="col-md-3 text-center">
         {% if profile.profile_picture %}
-            <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture" style="max-height:200px;">
+            <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture">
         {% endif %}
         {% if profile.user == request.user %}
-            <a href="{% url 'update_profile_picture' %}" class="btn btn-secondary mt-2" style="padding: 2px 5px; font-size: 12px;">Update Profile Picture</a>
-            <a href="{% url 'update_profile_bio' %}" class="btn btn-secondary mt-2" style="padding: 2px 5px; font-size: 12px;">Update Bio</a>
+            <div class="profile-actions">
+                <a href="{% url 'update_profile_picture' %}" class="btn btn-secondary" style="padding: 2px 5px; font-size: 12px;">Update Profile Picture</a>
+                <a href="{% url 'update_profile_bio' %}" class="btn btn-secondary" style="padding: 2px 5px; font-size: 12px;">Update Bio</a>
+            </div>
         {% endif %}
     </div>
     <div class="col-md-9">
         <h1 class="username">@{{ profile.user.username }}</h1>
-        <p style="font-family:Arial, Helvetica, sans-serif; font-size: 20px;">{{ profile.bio }}</p>
+        <p>{{ profile.bio }}</p>
 
         <!-- Followers dropdown -->
         <p>
@@ -97,6 +130,7 @@
         {% endif %}
     </div>
 </div>
+
 <div class="row mt-5">
     <div class="col-md-8 offset-md-2">
         <h2>{{ profile.user.username }}'s Posts</h2>

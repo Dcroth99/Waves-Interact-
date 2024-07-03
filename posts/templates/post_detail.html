@@ -4,7 +4,7 @@
 
 {% block content %}
 <style>
-      .post-card {
+    .post-card {
         max-width: 750px;
         margin: 0 auto 20px auto; /* Center the card and add bottom margin */
         padding: 15px;
@@ -23,7 +23,6 @@
         padding: 5px 10px;
         text-decoration: none;
         color: #495057;
-        
     }
     .btn-like:hover, .btn-comment:hover {
         background-color: #e2e6ea;
@@ -35,8 +34,59 @@
     .card-text {
         margin-bottom: 10px;
     }
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+    .btn-delete:hover {
+        background-color: #c82333;
+    }
+
+    /* Media Queries for smaller screens */
+    @media (max-width: 768px) {
+        .post-card {
+            margin: 10px;
+            padding: 10px;
+        }
+        .btn-like, .btn-comment {
+            font-size: 14px;
+            padding: 5px;
+        }
+        .comment-input {
+            font-size: 14px;
+        }
+        .card-title a {
+            font-size: 16px;
+        }
+        .card-text {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .post-card {
+            margin: 5px;
+            padding: 5px;
+        }
+        .btn-like, .btn-comment {
+            font-size: 12px;
+            padding: 3px;
+        }
+        .comment-input {
+            font-size: 12px;
+        }
+        .card-title a {
+            font-size: 14px;
+        }
+        .card-text {
+            font-size: 12px;
+        }
+    }
 </style>
-</style>
+
 <div class="container" style="max-width: 750px;">
     <div class="card mb-3">
         <div class="card-body">
@@ -89,5 +139,5 @@
         </div>
     </div>
 </div>
-<footer style=" margin-left: 650px;">@WAVES website</footer>
+<footer style="margin-left: 650px;">@WAVES website</footer>
 {% endblock %}
